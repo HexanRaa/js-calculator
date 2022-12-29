@@ -144,15 +144,11 @@ function numbersFromKeyboard(e) {
   if (e.key === "+" || e.key === "-" || e.key === "*" || e.key === "/")
     displayOperators(convertOperators(e.key));
   if (e.key === ".") displayDecimal(e.key);
-  if (e.key === "Backspace") deleteNumbers();
+  if (e.key === "Backspace") deleteChar();
   if (e.key === "Delete") allClear();
   if (e.key === "Enter") {
-    operate(currentOperator, firstNumber, currentDisplay.textContent);
-    firstNumber = currentDisplay.textContent;
-    currentDisplay.textContent += " " + operator;
-    currentOperator = operator;
-    currentOperation = `${firstNumber} ${currentOperator}`;
-    prevDisplay.textContent = currentOperation;
+    secondNumber = currentDisplay.textContent;
+    operate(currentOperator, firstNumber, secondNumber);
   }
 }
 
